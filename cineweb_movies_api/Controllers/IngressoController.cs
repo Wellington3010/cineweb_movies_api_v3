@@ -30,6 +30,11 @@ namespace cineweb_movies_api.Controllers
         [Route("cadastrar")]
         public async Task<IActionResult> CadastrarIngressos(IngressoDTO ingressoDTO)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             var filme = await _moviesRepository.FindByTitle(ingressoDTO.Titulo);
             var ingresso = _mapper.Map<Ingresso>(ingressoDTO);
             ingresso.Filme = filme;
@@ -66,7 +71,5 @@ namespace cineweb_movies_api.Controllers
         {
             return View();
         }
-
-
     }
 }

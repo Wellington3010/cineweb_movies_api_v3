@@ -32,17 +32,15 @@ namespace cineweb_movies_api.Controllers
             _mapper = mapper;
         }
 
-        [NonAction]
-        public PedidosController Instance()
-        {
-            return this;
-        }
-
-
         [HttpPost]
         [Route("cadastrar")]
         public async Task<IActionResult> CadastrarPedido(PedidoDTO pedidoDTO)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             bool pedidoDeFilmeSemIngressoCadastrado = false;
             List<Pedido> pedidosParaCadastro = new List<Pedido>();
             var pedido = _mapper.Map<Pedido>(pedidoDTO);
