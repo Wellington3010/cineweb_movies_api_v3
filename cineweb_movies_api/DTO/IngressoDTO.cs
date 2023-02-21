@@ -15,7 +15,7 @@ namespace cineweb_movies_api.DTO
         public int Preco { get; set; }
 
         [Required]
-        [Range(1,99999)]
+        [Range(1,99999, ErrorMessage = "A quantidade deve ser maior que zero")]
         public int? Quantidade { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("home")]
-        public ActionResult GetHomeMovies()
+        public IActionResult GetHomeMovies()
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
@@ -42,7 +42,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("current")]
-        public ActionResult GetCurrentMovies()
+        public IActionResult GetCurrentMovies()
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
@@ -58,7 +58,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("current/by-date")]
-        public ActionResult GetCurrentMoviesByDate(DateTime date)
+        public IActionResult GetCurrentMoviesByDate(DateTime date)
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
@@ -74,7 +74,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("coming-soon")]
-        public ActionResult GetComingSoonMovies()
+        public IActionResult GetComingSoonMovies()
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
@@ -90,7 +90,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("coming-soon/by-date")]
-        public ActionResult GetComingSoonMoviesByDate(DateTime date)
+        public IActionResult GetComingSoonMoviesByDate(DateTime date)
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
@@ -106,7 +106,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("by-parameter")]
-        public ActionResult GetMoviesByParameter(string parameter, string parameterType)
+        public IActionResult GetMoviesByParameter(string parameter, string parameterType)
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
             var dictionaryMovies = new Dictionary<string, List<Filme>>();
@@ -123,7 +123,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("admin/save-movie")]
-        public ActionResult SaveMovie([FromBody] CreateMovieDTO movie)
+        public IActionResult SaveMovie([FromBody] CreateMovieDTO movie)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -133,12 +133,12 @@ namespace cineweb_movies_api.Controllers
             var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(movie.Poster, "");
             movieEntity.Poster = Convert.FromBase64String(data);
             _moviesRepository.AddItem(movieEntity);
-            return Json(true);
+            return Ok(true);
         }
 
         [HttpPost]
         [Route("admin/update-movie")]
-        public async Task<ActionResult> UpdateMovie([FromBody] UpdateMovieDTO movie)
+        public async Task<IActionResult> UpdateMovie([FromBody] UpdateMovieDTO movie)
         {
             var movieEntity = _mapper.Map<Filme>(movie);
             var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(movie.Poster, "");
@@ -152,7 +152,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("admin/delete-movie")]
-        public async Task<ActionResult> DeleteMovieById([FromBody] DeleteMovieDTO movie)
+        public async Task<IActionResult> DeleteMovieById([FromBody] DeleteMovieDTO movie)
         {
             var movieResult = await _moviesRepository.FindByTitle(movie.TituloAntigo);
             await _moviesRepository.RemoveById(movieResult.Id);
@@ -161,7 +161,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("admin/find-by-movie-Genero")]
-        public async Task<ActionResult> FindByMovieGenero(string Genero)
+        public async Task<IActionResult> FindByMovieGenero(string Genero)
         {
             var adminMovies = new List<MovieDTO>();
             var moviesByGenero = await _moviesRepository.FindByGenre(Genero);
@@ -175,7 +175,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("admin/all-movies")]
-        public async Task<ActionResult> AllMovies()
+        public async Task<IActionResult> AllMovies()
         {
             var adminMovies = new List<MovieDTO>();
             var allMovies = await _moviesRepository.FindAll();
@@ -189,7 +189,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("admin/find-by-movie-Titulo")]
-        public ActionResult FindByMovieTitulo(string Titulo)
+        public IActionResult FindByMovieTitulo(string Titulo)
         {
             return Json(_mapper.Map<MovieDTO>(_moviesRepository.FindByTitle(Titulo)));
         }

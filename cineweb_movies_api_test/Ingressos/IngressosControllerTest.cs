@@ -44,7 +44,7 @@ namespace cineweb_movies_api_test.Ingressos
 
 
         [Test(Description = "CadastroDeIngressoComQuantidadeZerada")]
-        public void RealizarPedidoParaFilmeSemIngressosCadastrados()
+        public void CadastroDeIngressoComQuantidadeZerada()
         {
             _controller.ModelState.AddModelError("Quantidade", "A quantidade deve ser maior que zero");
             var retorno = _controller.CadastrarIngressos(_ingressoQuantidadeZeradaDTO).Result;
@@ -53,7 +53,7 @@ namespace cineweb_movies_api_test.Ingressos
         }
 
         [Test(Description = "CadastroDeIngressoComQuantidadeMaiorQueZero")]
-        public void RealizarPedidoParaFilmeComIngressosCadastrados()
+        public void CadastroDeIngressoComQuantidadeMaiorQueZero()
         {
             _mapper.Setup(x => x.Map<Ingresso>(_ingressoQuantidadeMaiorQueZeroDTO)).Returns(_ingresso);
             _filmeBaseRepository.Setup(x => x.FindByTitle(_ingressoQuantidadeMaiorQueZeroDTO.Titulo).Result).Returns(_filme);
