@@ -1,0 +1,14 @@
+﻿version: "2.2"
+
+services:
+ cineweb_movies_api:
+  container_name: cineweb_movies_api
+  image: cineweb_movies_api
+  environment:
+  - PORT=5000
+  ports:
+  - 5000:5000
+  build:
+   context: .
+   dockerfile: Dockerfile
+
