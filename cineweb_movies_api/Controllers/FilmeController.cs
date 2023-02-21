@@ -24,6 +24,7 @@ namespace cineweb_movies_api.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         [Route("home")]
         public ActionResult GetHomeMovies()
         {

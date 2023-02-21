@@ -39,7 +39,6 @@ namespace cineweb_movies_api.Controllers
         }
 
 
-
         [HttpPost]
         [Route("cadastrar")]
         public async Task<IActionResult> CadastrarPedido(PedidoDTO pedidoDTO)
