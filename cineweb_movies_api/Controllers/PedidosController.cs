@@ -32,6 +32,7 @@ namespace cineweb_movies_api.Controllers
             _mapper = mapper;
         }
 
+        [NonAction]
         public PedidosController Instance()
         {
             return this;
