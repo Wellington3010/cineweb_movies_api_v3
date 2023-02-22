@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using cineweb_movies_api.DTO;
 using cineweb_movies_api.Entities;
+using cineweb_movies_api.Filters;
 using cineweb_movies_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -34,9 +36,10 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("cadastrar")]
+        [Autorizacao]
         public async Task<IActionResult> CadastrarPedido(PedidoDTO pedidoDTO)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
@@ -108,8 +111,32 @@ namespace cineweb_movies_api.Controllers
             return Ok();
         }
 
+
+        [HttpPost]
+        [Route("cadastro-cliente")]
+        [Autorizacao]
+        public async Task<IActionResult> CadastrarCliente(CadastroClienteDTO cliente)
+        {
+            var clienteCadastrado = await _clientesRepository.FindByCPF(cliente.CPF);
+
+            if(clienteCadastrado is null)
+            {
+                try
+                {
+                    await _clientesRepository.AddItem(new Cliente { CPF = cliente.CPF, NomeCliente = cliente.NomeCliente });
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+
+            return Ok();
+        }
+
         [HttpDelete]
         [Route("deletar")]
+        [Autorizacao]
         public IActionResult DeletarPedido()
         {
             return View();
@@ -117,6 +144,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPut]
         [Route("atualizar")]
+        [Autorizacao]
         public IActionResult AtualizarPedido()
         {
             return View();
@@ -124,6 +152,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("listar")]
+        [Autorizacao]
         public async Task<IActionResult> ListarPedidos(int IdUsuario)
         {
 

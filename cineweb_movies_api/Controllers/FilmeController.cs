@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using cineweb_movies_api.DTO;
 using cineweb_movies_api.Entities;
+using cineweb_movies_api.Filters;
 using cineweb_movies_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -123,6 +124,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("admin/save-movie")]
+        [Autorizacao]
         public IActionResult SaveMovie([FromBody] CreateMovieDTO movie)
         {
             if (!ModelState.IsValid)
@@ -138,6 +140,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("admin/update-movie")]
+        [Autorizacao]
         public async Task<IActionResult> UpdateMovie([FromBody] UpdateMovieDTO movie)
         {
             var movieEntity = _mapper.Map<Filme>(movie);
@@ -152,6 +155,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("admin/delete-movie")]
+        [Autorizacao]
         public async Task<IActionResult> DeleteMovieById([FromBody] DeleteMovieDTO movie)
         {
             var movieResult = await _moviesRepository.FindByTitle(movie.TituloAntigo);

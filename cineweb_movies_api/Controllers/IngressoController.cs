@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using cineweb_movies_api.DTO;
 using cineweb_movies_api.Entities;
+using cineweb_movies_api.Filters;
 using cineweb_movies_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -28,6 +29,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("cadastrar")]
+        [Autorizacao]
         public async Task<IActionResult> CadastrarIngressos(IngressoDTO ingressoDTO)
         {
             if(!ModelState.IsValid)
@@ -45,6 +47,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("deletar")]
+        [Autorizacao]
         public async Task<IActionResult> DeletarIngressos(IngressoDTO ingressoDTO)
         {
             var filme = await _moviesRepository.FindByTitle(ingressoDTO.Titulo);
@@ -55,6 +58,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpPost]
         [Route("atualizar")]
+        [Autorizacao]
         public async Task<IActionResult> AtualizarIngressos(IngressoDTO ingressoDTO)
         {
             var filme = await _moviesRepository.FindByTitle(ingressoDTO.Titulo);
@@ -67,6 +71,7 @@ namespace cineweb_movies_api.Controllers
 
         [HttpGet]
         [Route("listar")]
+        [Autorizacao]
         public IActionResult ListarIngressos()
         {
             return View();
