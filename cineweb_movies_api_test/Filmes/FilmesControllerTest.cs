@@ -42,7 +42,7 @@ namespace cineweb_movies_api_test.Filmes
         [Test(Description = "CadastroDeFilmeSemPoster")]
         public void CadastroDeFilmeSemPoster()
         {
-            _controller.ModelState.AddModelError("Poster", "Deve ser cadastrado um poster para o filme");
+            _controller.ModelState.AddModelError("Poster", "É obrigatório o cadastro do poster");
             var retorno = _controller.SaveMovie(_filmeComAtributoPosterNulo);
 
             Assert.IsTrue(retorno.GetType() == typeof(BadRequestResult));
