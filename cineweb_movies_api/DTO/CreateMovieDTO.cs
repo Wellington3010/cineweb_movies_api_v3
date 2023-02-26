@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cineweb_movies_api.Filters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace cineweb_movies_api.DTO
         public string Titulo { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar a data do filme")]
+        [MovieDataValidation(ErrorMessage = "A data do filme sempre deve ser maior que a data atual")]
         public DateTime Data { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar o gênero do filme")]
