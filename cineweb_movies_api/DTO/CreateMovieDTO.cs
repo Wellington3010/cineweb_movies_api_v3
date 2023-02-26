@@ -8,26 +8,26 @@ namespace cineweb_movies_api.DTO
 {
     public class CreateMovieDTO
     {
-        [Required]
+        [Required(ErrorMessage = "É obrigatório informar título do filme")]
         public string Titulo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "É obrigatório informar a data do filme")]
         public DateTime Data { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "É obrigatório informar o gênero do filme")]
         public string Genero { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "É obrigatório informar se o filme estará ativo na página home")]
         public bool HomeMovie { get; set; }
 
-        [Required]
-        [RegularExpression(@"^data:image\/[a-z]+;base64,", ErrorMessage = "A imagem do poster deve estar no formato webp do tipo base64")]
+        [RegularExpression(@"(data:image\/[+;webp[^;]+;base64[^']+)", ErrorMessage = "A imagem do poster deve estar no formato webp do tipo base64")]
+        [Required(ErrorMessage = "É obrigatório o cadastro do poster")]
         public string Poster { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "É obrigatório informar a sinopse do filme")]
         public string Sinopse { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "É obrigatório informar se o filme está ativo ou não")]
         public bool Active { get; set; }
     }
 }
