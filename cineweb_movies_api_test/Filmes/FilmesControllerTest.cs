@@ -31,7 +31,7 @@ namespace cineweb_movies_api_test.Filmes
         {
             _mapper = new Mock<IMapper>();
             _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, Guid>>();
-            _filmeComAtributoPosterInvalido = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = "asdasdass", Sinopse = "Sinopse" };
+            _filmeComAtributoPosterInvalido = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = "ImagemForaDoFormatoWebp", Sinopse = "Sinopse" };
             _filmeComAtributoPosterNulo = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = null, Sinopse = "Sinopse" };
             _filmeComAtributoPosterPreenchido = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = "data:image/png;base64,iVBORw0KGg1kRbG0VZ2GoEX=", Sinopse = "Sinopse" };
             _filme = new Filme { Id = Guid.NewGuid() };
