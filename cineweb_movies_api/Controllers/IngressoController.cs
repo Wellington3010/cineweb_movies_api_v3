@@ -48,7 +48,7 @@ namespace cineweb_movies_api.Controllers
         [HttpPost]
         [Route("deletar")]
         [Autorizacao]
-        public async Task<IActionResult> DeletarIngressos(IngressoDTO ingressoDTO)
+        public async Task<IActionResult> DeletarIngressos(DeletarIngressoDTO ingressoDTO)
         {
             var filme = await _moviesRepository.FindByTitle(ingressoDTO.Titulo);
           

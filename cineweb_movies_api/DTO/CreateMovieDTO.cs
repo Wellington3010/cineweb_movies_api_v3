@@ -22,8 +22,8 @@ namespace cineweb_movies_api.DTO
         [Required(ErrorMessage = "É obrigatório informar se o filme estará ativo na página home")]
         public bool HomeMovie { get; set; }
 
-        [RegularExpression(@"(data:image\/[+;webp[^;]+;base64[^']+)", ErrorMessage = "A imagem do poster deve estar no formato webp do tipo base64")]
-        [Required(ErrorMessage = "É obrigatório o cadastro do poster")]
+        [RegularExpression(@"(data:image\/[+;webp[^;]+;base64[^']+)", ErrorMessage = "A imagem do pôster deve estar no formato webp do tipo base64")]
+        [Required(ErrorMessage = "É obrigatório o cadastro do pôster")]
         public string Poster { get; set; }
 
         [Required(ErrorMessage = "É obrigatório informar a sinopse do filme")]

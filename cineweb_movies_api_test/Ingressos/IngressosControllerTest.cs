@@ -46,7 +46,7 @@ namespace cineweb_movies_api_test.Ingressos
         [Test(Description = "CadastroDeIngressoComQuantidadeZerada")]
         public void CadastroDeIngressoComQuantidadeZerada()
         {
-            _controller.ModelState.AddModelError("Quantidade", "A quantidade deve ser maior que zero");
+            _controller.ModelState.AddModelError("Quantidade", "A quantidade de ingressos deve ser maior que zero");
             var retorno = _controller.CadastrarIngressos(_ingressoQuantidadeZeradaDTO).Result;
 
             Assert.IsTrue(retorno.GetType() == typeof(BadRequestResult));

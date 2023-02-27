@@ -31,7 +31,7 @@ namespace cineweb_movies_api.Controllers
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
-            var currentMovies = _moviesRepository.ListItems().Where(x => x.HomeMovie == true).ToList();
+            var currentMovies = _moviesRepository.ListItems().Where(x => x.HomeMovie == true && x.Active == false).ToList();
 
             currentMovies.ForEach((item) =>
             {
@@ -47,7 +47,7 @@ namespace cineweb_movies_api.Controllers
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
-            var currentMovies = _moviesRepository.ListItems().Where(x => x.Data < DateTime.Now && !x.HomeMovie).ToList();
+            var currentMovies = _moviesRepository.ListItems().Where(x => x.Active == true).ToList();
 
             currentMovies.ForEach((item) =>
             {
@@ -63,7 +63,7 @@ namespace cineweb_movies_api.Controllers
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
-            var currentMovies = _moviesRepository.ListItems().Where(x => x.Data < date && !x.HomeMovie).ToList();
+            var currentMovies = _moviesRepository.ListItems().Where(x => x.Active == true && x.Data <= date).ToList();
 
             currentMovies.ForEach((item) =>
             {
@@ -79,7 +79,7 @@ namespace cineweb_movies_api.Controllers
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
-            var comingSoonMovies = _moviesRepository.ListItems().Where(x => x.Data > DateTime.Now && !x.HomeMovie).ToList();
+            var comingSoonMovies = _moviesRepository.ListItems().Where(x => x.Active == false).ToList();
 
             comingSoonMovies.ForEach((item) =>
             {
@@ -95,7 +95,7 @@ namespace cineweb_movies_api.Controllers
         {
             List<UserMovieDTO> userMovies = new List<UserMovieDTO>();
 
-            var comingSoonMovies = _moviesRepository.ListItems().Where(x => x.Data > date && !x.HomeMovie).ToList();
+            var comingSoonMovies = _moviesRepository.ListItems().Where(x => x.Active == false && x.Data <= date).ToList();
 
             comingSoonMovies.ForEach((item) =>
             {
