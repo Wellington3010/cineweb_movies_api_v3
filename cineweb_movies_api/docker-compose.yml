@@ -1,7 +1,7 @@
 ﻿version: "2.2"
 
 services:
- cineweb-portal:
+ cineweb-movies-api:
   container_name: cineweb-movies-api
   image: public.ecr.aws/m7x6b7n4/cineweb-movies-api:latest
   environment:
