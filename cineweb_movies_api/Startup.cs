@@ -50,6 +50,8 @@ namespace cineweb_movies_api
                     builder.AllowAnyOrigin();
                 });
             });
+
+            services.AddHealthChecks();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,7 +78,9 @@ namespace cineweb_movies_api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
+
         }
     }
 }
