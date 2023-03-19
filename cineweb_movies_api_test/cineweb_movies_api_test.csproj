@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\cineweb_movies_api\cineweb_movies_api.csproj" />
+    <ProjectReference Include="..\cineweb_movies_api\cineweb-movies-api.csproj" />
   </ItemGroup>
 </Project>

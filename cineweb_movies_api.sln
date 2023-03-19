@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cineweb_movies_api_test", "cineweb_movies_api_test\cineweb_movies_api_test.csproj", "{23B243A5-DB85-4B58-BFE9-832AAD5EFC7B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cineweb_movies_api", "cineweb_movies_api\cineweb_movies_api.csproj", "{4B2FEF73-BA3C-4488-8089-0705B806F582}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cineweb-movies-api", "cineweb_movies_api\cineweb-movies-api.csproj", "{4B2FEF73-BA3C-4488-8089-0705B806F582}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
