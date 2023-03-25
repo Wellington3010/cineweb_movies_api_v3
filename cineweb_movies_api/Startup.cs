@@ -38,9 +38,13 @@ namespace cineweb_movies_api
 
             services.AddAutoMapper(typeof(ConfigurationMapping));
 
-            services.AddDbContext<ApplicationContext, ApplicationContext>(options =>
+            services.AddDbContext<ApplicationContext, ApplicationContext>(builder =>
             {
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+                builder.UseMySQL(Configuration.GetConnectionString("DefaultConnection"),
+                options =>
+                {
+                    options.EnableRetryOnFailure(5);
+                });
             });
 
             services.AddCors(setup => {
