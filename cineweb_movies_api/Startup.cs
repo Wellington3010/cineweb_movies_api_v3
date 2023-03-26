@@ -44,7 +44,7 @@ namespace cineweb_movies_api
                 options =>
                 {
                     options.EnableRetryOnFailure(5);
-                    options.CommandTimeout(240);
+                    options.CommandTimeout(680);
                 });
             });
 
