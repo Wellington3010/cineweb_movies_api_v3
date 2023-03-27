@@ -73,7 +73,7 @@ namespace cineweb_movies_api
             {
                 opt.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAPI V1");
             });
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
