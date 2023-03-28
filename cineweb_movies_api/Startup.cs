@@ -48,6 +48,8 @@ namespace cineweb_movies_api
                 });
             });
 
+            services.AddScoped<ApplicationContext, ApplicationContext>();
+
             services.AddCors(setup => {
                 setup.AddPolicy("CorsPolicy", builder => {
                     builder.AllowAnyHeader();
