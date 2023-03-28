@@ -54,7 +54,7 @@ namespace cineweb_movies_api
                 setup.AddPolicy("CorsPolicy", builder => {
                     builder.AllowAnyHeader();
                     builder.AllowAnyMethod();
-                    builder.WithOrigins("http://cinew-loadb-16fr9ntouhoop-592066732.sa-east-1.elb.amazonaws.com/");
+                    builder.WithOrigins("http://cinew-loadb-16fr9ntouhoop-592066732.sa-east-1.elb.amazonaws.com");
                 });
             });
 
