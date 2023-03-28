@@ -58,6 +58,7 @@ namespace cineweb_movies_api
                 });
             });
 
+
             services.AddHealthChecks();
         }
 
