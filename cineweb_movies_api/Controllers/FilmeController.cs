@@ -132,7 +132,7 @@ namespace cineweb_movies_api.Controllers
 
             var movieEntity = _mapper.Map<Filme>(movie);
             var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(movie.Poster, "");
-            movieEntity.Poster = Convert.FromBase64String(data);
+            movieEntity.Poster = data;
             _moviesRepository.AddItem(movieEntity);
             return Ok(true);
         }
@@ -144,7 +144,7 @@ namespace cineweb_movies_api.Controllers
         {
             var movieEntity = _mapper.Map<Filme>(movie);
             var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(movie.Poster, "");
-            movieEntity.Poster = Convert.FromBase64String(data);
+            movieEntity.Poster = data;
             var movieResult = await _moviesRepository.FindByTitle(movie.TituloAntigo);
             await _moviesRepository.RemoveById(movieResult.Id);
             movieEntity.Id = movieResult.Id;

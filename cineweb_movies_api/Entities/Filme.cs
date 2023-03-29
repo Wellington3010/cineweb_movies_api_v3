@@ -23,7 +23,7 @@ namespace cineweb_movies_api.Entities
         [Required]
         public string Genero { get; set; }
 
-        public byte[] Poster { get; set; }
+        public string Poster { get; set; }
 
         [Required]
         public string Sinopse { get; set; }

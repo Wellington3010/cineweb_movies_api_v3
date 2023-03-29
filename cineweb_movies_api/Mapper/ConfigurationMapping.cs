@@ -17,7 +17,7 @@ namespace cineweb_movies_api.Mapper
                 .ForMember(x => x.FilmeId, opt => opt.Ignore()).ReverseMap();
 
             CreateMap<Filme, UserMovieDTO>()
-                .ForMember(x => x.Poster, opt => opt.MapFrom(y => "data:image/webp;base64," + Convert.ToBase64String(y.Poster)))
+                .ForMember(x => x.Poster, opt => opt.MapFrom(y => "data:image/webp;base64," + y.Poster))
                 .ForMember(x => x.QuantidadeIngressos, opt => opt.MapFrom(y => y.Ingresso.Quantidade))
                 .ForMember(x => x.Preco, opt => opt.MapFrom(y => y.Ingresso.Preco));
 
@@ -26,14 +26,14 @@ namespace cineweb_movies_api.Mapper
                 .ForMember(x => x.Titulos, opt => opt.Ignore()).ReverseMap();
 
             CreateMap<UpdateMovieDTO, Filme>().ForMember(x => x.Poster, opt => opt.Ignore());
-            CreateMap<Filme, CreateMovieDTO>().ForMember(x => x.Poster, opt => opt.MapFrom(y => "data:image/webp;base64," + Convert.ToBase64String(y.Poster)));
+            CreateMap<Filme, CreateMovieDTO>().ForMember(x => x.Poster, opt => opt.MapFrom(y => "data:image/webp;base64," + y.Poster));
 
             CreateMap<MovieDTO, Filme>()
             .ForMember(dest => dest.Id, src => src.MapFrom(x => Guid.Parse(x.Id)));
 
             CreateMap<Filme, MovieDTO>()
                 .ForMember(dest => dest.Id, src => src.MapFrom(x => x.Id.ToString()))
-                .ForMember(x => x.Poster, opt => opt.MapFrom(y => "data:image/webp;base64," + Convert.ToBase64String(y.Poster)))
+                .ForMember(x => x.Poster, opt => opt.MapFrom(y => "data:image/webp;base64," + y.Poster))
                 .ForMember(x => x.QuantidadeIngressos, opt => opt.MapFrom(y => y.Ingresso.Quantidade))
                 .ForMember(x => x.Preco, opt => opt.MapFrom(y => y.Ingresso.Preco));
         }
