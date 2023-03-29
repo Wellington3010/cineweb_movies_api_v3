@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace cineweb_movies_api.Repositories
 {
-    public class IngressoRepository : IngressoBaseRepository<Ingresso, int, Guid>
+    public class IngressoRepository : IngressoBaseRepository<Ingresso, int, int>
     {
         private ApplicationContext _applicationContext { get; set; }
 
@@ -51,7 +51,7 @@ namespace cineweb_movies_api.Repositories
             throw new NotImplementedException();
         }
 
-        public override async Task<Ingresso> ListarIngressosPorFilme(Guid FilmeId)
+        public override async Task<Ingresso> ListarIngressosPorFilme(int FilmeId)
         {
             return await _applicationContext.Ingressos.Where(x => x.FilmeId == FilmeId).FirstOrDefaultAsync();
         }

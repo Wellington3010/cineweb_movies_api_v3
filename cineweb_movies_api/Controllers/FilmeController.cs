@@ -16,10 +16,10 @@ namespace cineweb_movies_api.Controllers
     [Route("movies")]
     public class FilmeController : Controller
     {
-        private readonly FilmeBaseRepository<Filme, Guid> _moviesRepository;
+        private readonly FilmeBaseRepository<Filme, int> _moviesRepository;
         private readonly IMapper _mapper;
         
-        public FilmeController(FilmeBaseRepository<Filme, Guid> repo, IMapper mapper)
+        public FilmeController(FilmeBaseRepository<Filme, int> repo, IMapper mapper)
         {
             _moviesRepository = repo;
             _mapper = mapper;
@@ -131,7 +131,6 @@ namespace cineweb_movies_api.Controllers
                 return BadRequest();
 
             var movieEntity = _mapper.Map<Filme>(movie);
-            movieEntity.Id = Guid.NewGuid();
             var data = new Regex(@"^data:image\/[a-z]+;base64,").Replace(movie.Poster, "");
             movieEntity.Poster = Convert.FromBase64String(data);
             _moviesRepository.AddItem(movieEntity);

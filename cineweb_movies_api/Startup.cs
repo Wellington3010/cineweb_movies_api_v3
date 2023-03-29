@@ -31,9 +31,9 @@ namespace cineweb_movies_api
             });
 
             services.AddControllers();
-            services.AddScoped<FilmeBaseRepository<Filme, Guid>, FilmeRepository>();
+            services.AddScoped<FilmeBaseRepository<Filme, int>, FilmeRepository>();
             services.AddScoped<PedidoBaseRepository<Pedido, int>, PedidoRepository>();
-            services.AddScoped<IngressoBaseRepository<Ingresso, int, Guid>, IngressoRepository>();
+            services.AddScoped<IngressoBaseRepository<Ingresso, int, int>, IngressoRepository>();
             services.AddScoped<ClienteBaseRepository<Cliente, int, string>, ClienteRepository>();
 
             services.AddAutoMapper(typeof(ConfigurationMapping));

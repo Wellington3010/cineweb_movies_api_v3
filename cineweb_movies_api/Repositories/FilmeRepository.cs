@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace cineweb_movies_api.Repositories
 {
-    public class FilmeRepository : FilmeBaseRepository<Filme, Guid>
+    public class FilmeRepository : FilmeBaseRepository<Filme, int>
     {
         private ApplicationContext _movieContext { get; set; }
         public FilmeRepository(ApplicationContext movieContext)
@@ -22,7 +22,7 @@ namespace cineweb_movies_api.Repositories
             await _movieContext.SaveChangesAsync();
         }
 
-        public override async Task<Filme> FindById(Guid id)
+        public override async Task<Filme> FindById(int id)
         {
             return await _movieContext.Filmes.Include(x => x.Ingresso).Where(x => x.Id == id).FirstOrDefaultAsync();
         }
@@ -32,7 +32,7 @@ namespace cineweb_movies_api.Repositories
             return _movieContext.Filmes.Include(x => x.Ingresso).AsQueryable();
         }
 
-        public override async Task RemoveById(Guid id)
+        public override async Task RemoveById(int id)
         {
             var filme = _movieContext.Filmes.Where(x => x.Id == id).FirstOrDefault();
             _movieContext.Filmes.Remove(filme);

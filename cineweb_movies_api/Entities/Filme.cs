@@ -11,8 +11,8 @@ namespace cineweb_movies_api.Entities
     public class Filme
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [Required]
         public string Titulo { get; set; }

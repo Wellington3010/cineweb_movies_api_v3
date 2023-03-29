@@ -37,7 +37,7 @@ namespace cineweb_movies_api_test.Ingressos
             _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, Guid>>();
             _ingressoQuantidadeZeradaDTO = new IngressoDTO { Preco = 75, Quantidade = 0, Titulo = "FlasPoint" };
             _ingressoQuantidadeMaiorQueZeroDTO = new IngressoDTO { Preco = 75, Quantidade = 300, Titulo = "FlasPoint" };
-            _filme = new Filme { Id = Guid.NewGuid() };
+            _filme = new Filme { Id = 1 };
             _ingresso = new Ingresso { Preco = 75, Quantidade = 300, Filme = _filme, FilmeId = _filme.Id, IdIngresso = 5 };
             _controller = new IngressoController(_mapper.Object, _ingressoRepository.Object, _filmeBaseRepository.Object);
         }

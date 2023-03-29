@@ -19,8 +19,8 @@ namespace cineweb_movies_api_test.Pedidos
         private PedidosController _controller;
         private PedidoDTO _pedido;
         private Pedido _pedidoEntity;
-        private Mock<IngressoBaseRepository<Ingresso, int, Guid>> _ingressoRepository;
-        private Mock<FilmeBaseRepository<Filme, Guid>> _filmeBaseRepository;
+        private Mock<IngressoBaseRepository<Ingresso, int, int>> _ingressoRepository;
+        private Mock<FilmeBaseRepository<Filme, int>> _filmeBaseRepository;
         private Mock<PedidoBaseRepository<Pedido, int>> _pedidoBaseRepository;
         private Mock<ClienteBaseRepository<Cliente, int, string>> _clienteBaseRepository;
         private Mock<IMapper> _mapper;
@@ -33,13 +33,13 @@ namespace cineweb_movies_api_test.Pedidos
         public void SetUp()
         {
             _mapper = new Mock<IMapper>();
-            _ingressoRepository = new Mock<IngressoBaseRepository<Ingresso, int, Guid>>();
-            _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, Guid>>();
+            _ingressoRepository = new Mock<IngressoBaseRepository<Ingresso, int, int>>();
+            _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, int>>();
             _pedidoBaseRepository = new Mock<PedidoBaseRepository<Pedido, int>>();
             _clienteBaseRepository = new Mock<ClienteBaseRepository<Cliente, int, string>>();
-            _ingressoQuantidadeZerada = new Ingresso { FilmeId = Guid.NewGuid(), IdIngresso = 5, Preco = 75, Quantidade = 0 };
-            _ingressoQuantidadeMaiorQueZero = new Ingresso { FilmeId = Guid.NewGuid(), IdIngresso = 5, Preco = 75, Quantidade = 50 };
-            _filme = new Filme { Id = Guid.NewGuid() };
+            _ingressoQuantidadeZerada = new Ingresso { FilmeId = 1, IdIngresso = 5, Preco = 75, Quantidade = 0 };
+            _ingressoQuantidadeMaiorQueZero = new Ingresso { FilmeId = 1, IdIngresso = 5, Preco = 75, Quantidade = 50 };
+            _filme = new Filme { Id = 1 };
             _ingressoQuantidadeZerada.Filme = _filme;
             _ingressoQuantidadeMaiorQueZero.Filme = _filme;
             _pedido = new PedidoDTO { CPF = "233.642.340-51", NomeCliente = "Jaber", Titulos = new List<string>(), ValorTotal = 125 };

@@ -17,14 +17,14 @@ namespace cineweb_movies_api.Controllers
     {
         private ClienteBaseRepository<Cliente, int, string> _clientesRepository;
         private PedidoBaseRepository<Pedido, int> _pedidosRepository;
-        private readonly FilmeBaseRepository<Filme, Guid> _moviesRepository;
-        private readonly IngressoBaseRepository<Ingresso, int, Guid> _ingressoBaseRepository;
+        private readonly FilmeBaseRepository<Filme, int> _moviesRepository;
+        private readonly IngressoBaseRepository<Ingresso, int, int> _ingressoBaseRepository;
         private IMapper _mapper;
 
         public PedidosController(
             ClienteBaseRepository<Cliente, int, string> clienteRepository,
-            FilmeBaseRepository<Filme, Guid> moviesRepository,
-            IngressoBaseRepository<Ingresso, int, Guid> ingressoBaseRepository,
+            FilmeBaseRepository<Filme, int> moviesRepository,
+            IngressoBaseRepository<Ingresso, int, int> ingressoBaseRepository,
             PedidoBaseRepository<Pedido, int> pedidoRepository, IMapper mapper)
         {
             _clientesRepository = clienteRepository;
@@ -47,7 +47,7 @@ namespace cineweb_movies_api.Controllers
             bool pedidoDeFilmeSemIngressoCadastrado = false;
             List<Pedido> pedidosParaCadastro = new List<Pedido>();
             var pedido = _mapper.Map<Pedido>(pedidoDTO);
-            pedido.CodigoPedido = Guid.NewGuid();
+            pedido.CodigoPedido = Guid.NewGuid().ToString();
             var cliente = await _clientesRepository.FindByCPF(pedidoDTO.CPF);
 
             if (cliente is not null)

@@ -20,7 +20,7 @@ namespace cineweb_movies_api_test.Filmes
     {
         private FilmeController _controller;
         private Filme _filme;
-        private Mock<FilmeBaseRepository<Filme, Guid>> _filmeBaseRepository;
+        private Mock<FilmeBaseRepository<Filme, int>> _filmeBaseRepository;
         private Mock<IMapper> _mapper;
         private CreateMovieDTO _filmeComAtributoPosterNulo;
         private CreateMovieDTO _filmeComAtributoPosterInvalido;
@@ -30,11 +30,11 @@ namespace cineweb_movies_api_test.Filmes
         public void SetUp()
         {
             _mapper = new Mock<IMapper>();
-            _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, Guid>>();
+            _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, int>>();
             _filmeComAtributoPosterInvalido = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = "ImagemForaDoFormatoWebp", Sinopse = "Sinopse" };
             _filmeComAtributoPosterNulo = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = null, Sinopse = "Sinopse" };
             _filmeComAtributoPosterPreenchido = new CreateMovieDTO { Titulo = "FlasPoint", Active = true, Data = DateTime.Now, Genero = "Ação", HomeMovie = true, Poster = "data:image/webp;base64,iVBORw0KGg1kRbG0VZ2GoEX=", Sinopse = "Sinopse" };
-            _filme = new Filme { Id = Guid.NewGuid() };
+            _filme = new Filme { Id = 1 };
             _controller = new FilmeController(_filmeBaseRepository.Object, _mapper.Object);
         }
 

@@ -12,10 +12,10 @@ namespace cineweb_movies_api.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public Guid CodigoPedido { get; set; }
+        public string CodigoPedido { get; set; }
 
         [ForeignKey("filme")]
-        public Guid FilmeId { get; set; }
+        public int FilmeId { get; set; }
 
         [NotMapped]
         public Filme Filme { get; set; }
