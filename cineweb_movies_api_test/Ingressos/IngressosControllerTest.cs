@@ -22,8 +22,8 @@ namespace cineweb_movies_api_test.Ingressos
     {
         private IngressoController _controller;
         private Ingresso _ingresso;
-        private Mock<IngressoBaseRepository<Ingresso, int, Guid>> _ingressoRepository;
-        private Mock<FilmeBaseRepository<Filme, Guid>> _filmeBaseRepository;
+        private Mock<IngressoBaseRepository<Ingresso, int, int>> _ingressoRepository;
+        private Mock<FilmeBaseRepository<Filme, int>> _filmeBaseRepository;
         private Mock<IMapper> _mapper;
         private IngressoDTO _ingressoQuantidadeZeradaDTO;
         private IngressoDTO _ingressoQuantidadeMaiorQueZeroDTO;
@@ -33,8 +33,8 @@ namespace cineweb_movies_api_test.Ingressos
         public void SetUp()
         {
             _mapper = new Mock<IMapper>();
-            _ingressoRepository = new Mock<IngressoBaseRepository<Ingresso, int, Guid>>();
-            _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, Guid>>();
+            _ingressoRepository = new Mock<IngressoBaseRepository<Ingresso, int, int>>();
+            _filmeBaseRepository = new Mock<FilmeBaseRepository<Filme, int>>();
             _ingressoQuantidadeZeradaDTO = new IngressoDTO { Preco = 75, Quantidade = 0, Titulo = "FlasPoint" };
             _ingressoQuantidadeMaiorQueZeroDTO = new IngressoDTO { Preco = 75, Quantidade = 300, Titulo = "FlasPoint" };
             _filme = new Filme { Id = 1 };
