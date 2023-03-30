@@ -17,10 +17,10 @@ namespace cineweb_movies_api.Controllers
     public class IngressoController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly FilmeBaseRepository<Filme, Guid> _moviesRepository;
-        private readonly IngressoBaseRepository<Ingresso, int, Guid> _ingressoBaseRepository;
+        private readonly FilmeBaseRepository<Filme, int> _moviesRepository;
+        private readonly IngressoBaseRepository<Ingresso, int, int> _ingressoBaseRepository;
 
-        public IngressoController(IMapper mapper, IngressoBaseRepository<Ingresso, int, Guid> ingressoBaseRepository, FilmeBaseRepository<Filme, Guid> moviesRepository)
+        public IngressoController(IMapper mapper, IngressoBaseRepository<Ingresso, int, int> ingressoBaseRepository, FilmeBaseRepository<Filme, int> moviesRepository)
         {
             _mapper = mapper;
             _moviesRepository = moviesRepository;
